@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Devices>
+	<Dev SrNo="ABCD1234WXYX0001">
+		<Address>192.168.121.100</Address>
+		<DevName>Bizub c224i</DevName>
+		<ModelName>Poseidon</ModelName>
+		<Type>A5</Type>
+		<CommSetting>
+			<PortNo>655</PortNo>
+			<UseSSL>true</UseSSL>
+			<Password>DJmfoTE2Hv23sJIsnsMk0Q==</Password>
+		</CommSetting>
+	</Dev>
+	<Dev SrNo="ABCD1234WXYX0002">
+		<Address>192.168.121.101</Address>
+		<DevName>Bizub c225i</DevName>
+		<ModelName>Poseidon</ModelName>
+		<Type>A3</Type>
+		<CommSetting>
+			<PortNo>758</PortNo>
+			<UseSSL>true</UseSSL>
+			<Password>DJmfoTE2Hv23sJIsnsMk0Q==</Password>
+		</CommSetting>
+	</Dev>
+	<Dev SrNo="ABCD1234WXYX0003">
+		<Address>192.168.121.102</Address>
+		<DevName>Bizub c226i</DevName>
+		<ModelName>Poseidon</ModelName>
+		<Type>A4</Type>
+		<CommSetting>
+			<PortNo>457</PortNo>
+			<UseSSL>true</UseSSL>
+			<Password>DJmfoTE2Hv23sJIsnsMk0Q==</Password>
+		</CommSetting>
+	</Dev>
+</Devices>

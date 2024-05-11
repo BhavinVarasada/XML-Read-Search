@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="Devices">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="1" maxOccurs="unbounded" name="Dev">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Address" minOccurs="1" maxOccurs="1">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<!-- Pattern for IPv4 address format -->
+										<xs:pattern value="(((25[0-5]|2[0-4][0-9]|[1]?[0-9]{1,2})\.){3}(25[0-5]|2[0-4][0-9]|[1]?[0-9]{1,2}))?"/>
+										<xs:minLength value="1" />
+										<xs:maxLength value="15" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+
+							<xs:element name="DevName" minOccurs="1" maxOccurs="1">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<!-- Pattern for A-Z a-z 0-9 address format -->
+										<xs:pattern value="[a-zA-Z0-9 ]*"/>
+										<xs:minLength value="0" />
+										<xs:maxLength value="24" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+
+							<xs:element name="ModelName" minOccurs="0" maxOccurs="1">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<!-- Pattern for A-Z a-z 0-9 address format -->
+										<xs:pattern value="[a-zA-Z0-9 ]*"/>
+										<xs:minLength value="0" />
+										<xs:maxLength value="24" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+
+							<xs:element name="Type" minOccurs="1" maxOccurs="1">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="A3"/>
+										<xs:enumeration value="A4"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+
+							<xs:element name="CommSetting" minOccurs="1" maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="PortNo" minOccurs="1" maxOccurs="1">
+											<xs:simpleType>
+												<xs:restriction base="xs:int">
+													<xs:minInclusive value="1" />
+													<xs:maxInclusive value="65535" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+
+										<xs:element name="UseSSL" type="xs:boolean" minOccurs="1" maxOccurs="1" />
+										<xs:element name="Password" default="">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<!-- Pattern for ASCII Characters address format -->
+													<xs:pattern value="[ -~]*"/>
+													<xs:minLength value="0" />
+													<xs:maxLength value="64" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+
+						</xs:sequence>
+						<xs:attribute name="SrNo" use="required">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:pattern value="[A-Z0-9]+"/>
+									<xs:minLength value="16" />
+									<xs:maxLength value="16" />
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+		<xs:unique name="uniqueSrNo">
+			<xs:selector xpath="Dev"/>
+			<xs:field xpath="@SrNo"/>
+		</xs:unique>
+		<xs:unique name="uniqueAddress">
+			<xs:selector xpath="Dev"/>
+			<xs:field xpath="Address"/>
+		</xs:unique>
+	</xs:element>
+</xs:schema>
